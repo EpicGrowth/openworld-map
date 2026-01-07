@@ -2,26 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area padding for mobile devices */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+@layer base {
+  /* OpenWorld.Map Design System - Dark First */
+  /* Primary: #6366F1 (indigo) = 239 84% 67% in HSL */
+  /* Dark theme as default for outdoor/vehicle use */
+
+  :root {
+    /* Dark theme values (default) */
+    --background: 222 47% 11%; /* #111827 - bg-body */
+    --foreground: 210 40% 98%; /* #F9FAFB - text-primary */
+    --card: 217 33% 17%; /* #1F2937 - bg-primary */
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 67%; /* #6366F1 - brand primary */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 19% 27%; /* #374151 - bg-secondary */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 16% 57%; /* #9CA3AF - text-secondary */
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%; /* Red for errors */
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 19% 27%; /* #374151 */
+    --input: 217 19% 27%;
+    --ring: 239 84% 67%;
+
+    /* Pin category colors (HSL) */
+    --pin-traffic: 0 84% 60%; /* #EF4444 */
+    --pin-safety: 25 95% 53%; /* #F97316 */
+    --pin-deals: 142 71% 45%; /* #22C55E */
+    --pin-amenities: 217 91% 60%; /* #3B82F6 */
+    --pin-general: 220 9% 46%; /* #6B7280 */
+
+    /* Gamification */
+    --xp: 45 93% 47%; /* #FBBF24 */
+    --level: 263 70% 50%; /* #8B5CF6 */
+    --active: 160 84% 39%; /* #10B981 */
+
+    /* Chart colors */
+    --chart-1: 239 84% 67%; /* Primary indigo */
+    --chart-2: 142 71% 45%; /* Deals green */
+    --chart-3: 25 95% 53%; /* Safety orange */
+    --chart-4: 0 84% 60%; /* Traffic red */
+    --chart-5: 263 70% 50%; /* Level purple */
+
+    --radius: 0.5rem;
+  }
+
+  /* Light theme (optional, for accessibility toggle) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 239 84% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 }

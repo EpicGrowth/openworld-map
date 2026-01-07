@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OpenWorld.Map
+
+A location-aware social platform for gig workers to share real-time traffic updates, safety alerts, deals, and community tips.
+
+> **Important**: Full project documentation, specifications, and AI prompts are located at:
+> `C:\Users\izaak\Documents\Source\Master-AI\projects\Fleevigo`
+>
+> **Always review the documentation and prompts in this location before making changes to ensure consistency with the project vision and requirements.**
+
+## Features
+
+- **Real-time Feed** - Share and discover traffic updates, safety alerts, deals, and tips
+- **Interactive Map** - View pins and posts on a Mapbox-powered map
+- **Leaderboard** - Gamified experience with XP points and levels
+- **User Profiles** - Track contributions and achievements
+- **Dark Theme** - Optimized for outdoor/vehicle use
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Database**: Supabase (PostgreSQL + PostGIS)
+- **Auth**: Supabase Auth
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Maps**: Mapbox GL JS
+- **State**: Zustand + React Query
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- pnpm (recommended) or npm
+- Supabase account
+- Mapbox account
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd fleevigo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Fill in your environment variables in `.env.local`:
+   - Get Supabase credentials from your [Supabase Dashboard](https://supabase.com/dashboard)
+   - Get Mapbox token from [Mapbox Account](https://account.mapbox.com/access-tokens/)
 
-## Learn More
+5. Set up the database:
+   - Run the SQL migrations in `supabase/migrations/` in your Supabase SQL editor
 
-To learn more about Next.js, take a look at the following resources:
+6. Start the development server:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+7. Open [http://localhost:3009](http://localhost:3009) in your browser
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (auth)/            # Auth pages (login, register, onboarding)
+│   ├── (main)/            # Main app pages (feed, map, leaderboard, profile)
+│   ├── auth/              # Auth callbacks
+│   └── status/            # System status page
+├── components/
+│   ├── layout/            # Navigation components
+│   ├── ui/                # shadcn/ui components
+│   └── ...                # Feature components
+├── features/              # Feature-specific code
+│   └── auth/              # Auth actions and hooks
+├── lib/                   # Utilities and configs
+│   └── supabase/          # Supabase client setup
+├── stores/                # Zustand stores
+└── types/                 # TypeScript type definitions
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm dev          # Start development server
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+```
+
+## Environment Variables
+
+See `.env.example` for all available environment variables.
+
+Required:
+- `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Your Supabase anonymous key
+- `NEXT_PUBLIC_MAPBOX_TOKEN` - Your Mapbox public access token
+
+## User Types
+
+The platform supports three types of gig workers:
+- **Riders** - Delivery riders (food, packages, courier)
+- **Drivers** - Rideshare drivers (Uber, Lyft, taxi)
+- **Chauffeurs** - Private hire and luxury transport
+
+## Post Categories
+
+- **Traffic** - Road conditions, jams, accidents
+- **Safety** - Danger alerts, scams, unsafe areas
+- **Deals** - Discounts, offers, promotions
+- **Amenities** - Rest stops, parking, food, fuel
+- **General** - Community discussions
+
+## License
+
+MIT
