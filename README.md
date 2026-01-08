@@ -7,6 +7,51 @@ A location-aware social platform for gig workers to share real-time traffic upda
 >
 > **Always review the documentation and prompts in this location before making changes to ensure consistency with the project vision and requirements.**
 
+## Development Workflow
+
+### Session Protocol
+
+Every development session must follow this workflow:
+
+1. **Start of Session:**
+   - Read `SESSION_HISTORY.md` (latest entry) in the docs folder
+   - Review the prompts in `openworld.first doc/prompts/`
+   - Understand the XPLAINING → VERIFICATION → IMPLEMENTATION workflow
+
+2. **During Session:**
+   - Follow `USERRULES.md` for code patterns and conventions
+   - Use `VERIFICATION.md` before starting new features
+   - Reference `TECHSTACK.md` before adding dependencies
+
+3. **End of Session:**
+   - Update `SESSION_HISTORY.md` with what was done
+   - Update this README with latest important changes
+   - Commit and push all changes
+
+### Key Documentation Files
+
+| File | Location | Purpose |
+|------|----------|---------|
+| `SESSION_HISTORY.md` | `Master-AI/.../openworld.first doc/` | Session logs & next steps |
+| `prompts/README.md` | `Master-AI/.../openworld.first doc/prompts/` | Workflow system overview |
+| `USERRULES.md` | `Master-AI/.../openworld.first doc/prompts/` | Code patterns & rules |
+| `03_FEATURE_SPECIFICATION.md` | `Master-AI/.../openworld.first doc/` | Feature requirements |
+
+## Latest Session Summary (Session 4 - Jan 8, 2026)
+
+**Completed:**
+- Renamed project from Fleevigo to OpenWorld.Map
+- Built navigation (TopNav, BottomNav, MainLayout)
+- Built all core pages (Feed, Map, Leaderboard, Profile)
+- Built UI components (Avatar, Badge, Modal, PostCard, CreatePostModal)
+- Pushed to GitHub: https://github.com/EpicGrowth/openworld-map
+
+**Next Steps:**
+- Implement Mapbox map with real pins
+- Add post creation with database insert
+- Implement helpful votes and comments
+- Style pages to match MVP screenshots
+
 ## Features
 
 - **Real-time Feed** - Share and discover traffic updates, safety alerts, deals, and tips
